@@ -43,18 +43,21 @@
       </form>
 
       <div class="d-flex justify-content-center">
+        {% if pokemon %}
         <div class="card" style="width: 18rem">
-          <img
-          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/25.svg""
+          <img src="{{pokemon.photo}}"
           class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">pikachu</h5>
-            <p class="card-text">heigth</p>
-            <p class="card-text">weigth</p>
+            <h5 class="card-title">{{ pokemon.name }}</h5>
+            <p class="card-text">Heigth:{{ pokemon.height }}</p>
+            <p class="card-text">Weigth:{{ pokemon.weight }}</p>
+            <p class="card-text">Order:{{ pokemon.order }}</p>
+            <p class="card-text">type:{{ pokemon.type }}</p>
             <a href="#" class="btn btn-primary">captuar</a>
             <a href="#" class="btn btn-primary">detalle</a>
           </div>
         </div>
+        {% endif %}
       </div>
     </div>
   </body>
