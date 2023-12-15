@@ -1,4 +1,4 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,request
 import requests
 from dotenv import load_dotenv,dotenv_values
 
@@ -33,30 +33,34 @@ def get_pokemon_data(pokemon):
     r = requests.get(url).json()
     return r
 
-@app.route("/")
+@app.route("/",methods=['GET','POST'])
 def home():
-    data = get_pokemon_data('lucario')
-    pokemon={
-        'id':data.get('id'),
-        'name' : data.get('name').upper(),
-        'height':data.get('height'),
-        'weight' : data.get('weight'),
-        'order' :data.get('order'),
-        'type' : 'profesor',
-        'photo':data.get('sprites').get('other').get('official-artwork').get('front_default')
-        }        
+    pokemon = None
+    if request.method == 'POST' :
+        name_pokemon = request.form.get('nombre')
+        if name_pokemon:
+            data = get_pokemon_data(name_pokemon.lower())
+            if data:
+                pokemon={
+                    'id':data.get('id'),
+                    'name' : data.get('name').upper(),
+                    'height':data.get('height'),
+                    'weight' : data.get('weight'),
+                    'order' :data.get('order'),
+                    'type' : 'profesor',
+                    'photo':data.get('sprites').get('other').get('official-artwork').get('front_default')
+                    }        
     return render_template('pokemon.html',pokemon=pokemon)
 
 @app.route("/detalle")
 def detalle():
     return render_template('detalle.html')
 
-@app.route("/insert")
-def insert():
-    new_pokemon= 'ditto'
-    
+@app.route("/insert_pokemon/<pokemon>")
+def insert(pokemon):
+    new_pokemon= pokemon
     if new_pokemon:
-        obj=Pokemon(name=new_pokemon,height=1.75,weight=100,order=100,type='Normal')
+        obj=Pokemon(pokemon)
         db.session.add(obj)
         db.session.commit()    
        
