@@ -28,8 +28,9 @@
     </form>
     
     <div class="d-flex justify-content-center">
-        <img src='{{ pokemon.photo }}'>
         {%if pokemon %}
+        <div class="card" style="width: 18rem;">
+             <img src='{{ pokemon.photo }}' class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">{{ pokemon.name }}</h5>
             <p class="card-text">Height : {{ pokemon.height }} </p>
@@ -38,7 +39,7 @@
             <p class="card-text">Type : {{ pokemon.type }}</p>
             <p class="card-text">Speed : {{ pokemon.speed }}</p>
             <a href="#" class="btn btn-primary">Capturar </a>
-            <a href="{{ url_for('detalle',hp=pokemon.hp, attack=pokemon.attack, defence=pokemon.defence, speed=pokemon.speed) }}" class="btn btn-primary">Detalle</a>
+            <a href="{{ url_for('detalle', name=pokemon.name)}}" class="btn btn-primary">Detalle</a>
 
           </div>
         </div>
