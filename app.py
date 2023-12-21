@@ -48,18 +48,29 @@ def home():
                     'weight' : data.get('weight'),
                     'order' :data.get('order'),
                     'type' : 'profesor',
+                    'photo':data.get('sprites').get('other').get('official-artwork').get('front_default')
+                    } 
+                print(pokemon)     
+    return render_template('pokemon.html',pokemon=pokemon)
+
+@app.route("/detalle/<name>/")
+def detalle(name):
+    data = get_pokemon_data(name.lower())
+    pokemon={
+                    'id':data.get('id'),
+                    'name' : data.get('name').upper(),
+                    'height':data.get('height'),
+                    'weight' : data.get('weight'),
+                    'order' :data.get('order'),
+                    'type' : 'profesor',
                     'hp' : data.get('stats')[0].get('base_stat'),
                     'attack' : data.get('stats')[1].get('base_stat'),
                     'defence' : data.get('stats')[2].get('base_stat'),
                     'speed' : data.get('stats')[5].get('base_stat'),
                     'photo':data.get('sprites').get('other').get('official-artwork').get('front_default')
                     } 
-                print(pokemon)     
-    return render_template('pokemon.html',pokemon=pokemon)
 
-@app.route("/detalle/<hp>/<attack>/<defence>/<speed>/")
-def detalle(hp,attack,defence,speed):
-    return render_template('detalle.html',hp=hp,attack=attack,defence=defence,speed=speed)
+    return render_template('detalle.html',pokemon = pokemon)
 
 
 #@app.route("/detalle")
