@@ -19,22 +19,22 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">{{name}}</h5>
-            <p class="card-text">HP: {{hp}}</p>
+            <h5 class="card-title">{{pokemon.name}}</h5>
+            <p class="card-text">HP: {{pokemon.hp}}</p>
             <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="{{pokemon.HP}}" aria-valuemin="0" aria-valuemax="200">
-              <div class="progress-bar bg-warning" style="width: '{{hp}}%'">{{(HP/ 200) * 100}}%</div>
+              <div class="progress-bar bg-warning" style="width: '{{hp}}%'">{{(pokemon.hp/ 200) * 100}}%</div>
             </div>
-            <p class="card-text">Attack: {{attack}}</p>
+            <p class="card-text">Attack: {{pokemon.attack}}</p>
             <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="{{pokemon.HP}}" aria-valuemin="0" aria-valuemax="200">
-              <div class="progress-bar bg-danger" style="width: '{{attack}}%'">{{(attack/ 200) * 100}}%</div>
+              <div class="progress-bar bg-danger" style="width: '{{attack}}%'">{{(pokemon.attack/ 200) * 100}}%</div>
             </div>
-            <p class="card-text">Defence: {{defence}}</p>
+            <p class="card-text">Defence: {{pokemon.defence}}</p>
             <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="{{pokemon.HP}}" aria-valuemin="0" aria-valuemax="200">
-              <div class="progress-bar bg-gradient" style="width: '{{defence}}%'">{{(defense/ 200) * 100}}%</div>
+              <div class="progress-bar bg-gradient" style="width: '{{defence}}%'">{{(pokemon.defence/ 200) * 100}}%</div>
             </div>
-            <p class="card-text">Speed: {{speed}}</p>
+            <p class="card-text">Speed: {{pokemon.speed}}</p>
             <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="{{pokemon.HP}}" aria-valuemin="0" aria-valuemax="200">
-             <div class="progress-bar bg-gradient" style="width: '{{speed}}%'">{{(speed/ 200) * 100}}%</div>
+             <div class="progress-bar bg-gradient" style="width: '{{speed}}%'">{{(pokemon.speed/ 200) * 100}}%</div>
             </div>
           </div>
         </div>
@@ -44,7 +44,3 @@
 
 </body>
 </html>
-
-
-
-
